@@ -1,0 +1,7 @@
+footer {
+    background-color: #495E57;
+    padding: 10px;
+    text-align: center;
+    /* Ensure the footer stays at the bottom */
+    margin-top: auto;
+}

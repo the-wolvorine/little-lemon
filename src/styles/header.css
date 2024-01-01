@@ -1,28 +1,32 @@
+.header-links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex; /* Use flexbox to display items in a row */
+}
+
+/* Style each list item */
+.header-links li {
+    margin-right: 50px; /* Add some spacing between items */
+}
+
+/* Style the links */
+.header-links a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #333; /* Set the color to your preference */
+}
+
+/* Optional: Style the header and image */
 header {
+    background-color: #f8f8f8; /* Set the background color to your preference */
+    padding: 1rem 6rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 4rem;
-    padding-right: 4rem;
-    height: 8rem;
 }
 
 .img {
-    padding-left: 40px;
-    height: 5rem;
-}
-
-nav {
-    display: flex;
-}
-
-ul {
-    padding-right: 40px;
-}
-
-a {
-    margin: 15px;
-    text-decoration: none;
-    color: #333;
-    font-weight: 700;
+    max-width: 100%; /* Set the maximum width for the image */
+    margin-right: 20px; /* Add some spacing between the image and the nav */
 }
