@@ -1,31 +1,33 @@
+import "../styles/footer.css";
+
 export default function Footer() {
     return(
         <footer>
             <nav>
                 <p>Doormat Navigation</p>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/">About</a></li>
-                    <li><a href="/">Menu</a></li>
-                    <li><a href="/">Reservations</a></li>
-                    <li><a href="/">Order Online</a></li>
-                    <li><a href="/">Login</a></li>
+                    <a href="/">Home</a>
+                    <a href="/">About</a>
+                    <a href="/">Menu</a>
+                    <a href="/">Reservations</a>
+                    <a href="/">Order Online</a>
+                    <a href="/">Login</a>
                 </ul>
             </nav>
             <nav>
                 <p>Contact Us</p>
                 <ul>
-                    <li><a href="/">Address</a></li>
-                    <li><a href="/">Phone Number</a></li>
-                    <li><a href="/">email</a></li>
+                    <a href="/">Address</a>
+                    <a href="/">Phone Number</a>
+                    <a href="/">email</a>
                 </ul>
             </nav>
             <nav>
                 <p>Social Media Links</p>
                 <ul>
-                    <li><a href="/">Facebook</a></li>
-                    <li><a href="/">Instagram</a></li>
-                    <li><a href="/">Pintrest</a></li>
+                    <a href="/">Facebook</a>
+                    <a href="/">Instagram</a>
+                    <a href="/">Pintrest</a>
                 </ul>
             </nav>
         </footer>

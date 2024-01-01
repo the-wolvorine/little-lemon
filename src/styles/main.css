@@ -1,0 +1,47 @@
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 4rem;
+    padding-right: 14rem;
+    height: 40rem;
+    background-color: #495E57;
+}
+
+.hero-section {
+    display: block;
+    margin: 30px;
+    padding-left: 40px;
+    max-width: 45%;
+}
+
+.hero-title {
+    color: #F4CE14;
+    margin: 0;
+}
+
+.hero-location {
+    color: #EDEFEE;
+    margin: 0;
+}
+
+.hero-description {
+    color: #EDEFEE;
+}
+
+.hero-button {
+    background-color: #F4CE14;
+    width: 20rem;
+    height: 4rem;
+    border-radius: 20px;
+}
+
+.hero-button > p {
+    margin: 0;
+}
+
+.food-img {
+    margin-top: 185px;
+    border-radius: 25px;
+    max-height: 35rem;
+}

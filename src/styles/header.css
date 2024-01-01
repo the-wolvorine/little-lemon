@@ -1,0 +1,28 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    height: 8rem;
+}
+
+.img {
+    padding-left: 40px;
+    height: 5rem;
+}
+
+nav {
+    display: flex;
+}
+
+ul {
+    padding-right: 40px;
+}
+
+a {
+    margin: 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+}
