@@ -1,8 +1,14 @@
 .form-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 70vh; /* Ensure the container takes at least the full viewport height */
+    min-height: 70vh;
+}
+
+.booking-heading {
+    font-size: 30pt;
+    margin-bottom: 20px;
 }
 
 .booking-form {

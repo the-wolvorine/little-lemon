@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "../styles/bookingForm.css";
 import Button from './Button/Button';
 
-const BookingForm = ({ onSubmit, updateTimes, availableTimes }) => {
+const BookingForm = ({ onSubmit, updateTimes, availableTimes=[] }) => {
   const [formData, setFormData] = useState({
     date: '',
     reservationTime: '',
@@ -36,6 +36,7 @@ const BookingForm = ({ onSubmit, updateTimes, availableTimes }) => {
 
   return (
     <div className='form-container'>
+        <h1 className='booking-heading'>Book Your Table</h1>
       <form className="booking-form" onSubmit={handleSubmit}>
         <label>
           <p className="form-label">Choose a Date:</p>
