@@ -1,5 +1,6 @@
 import React from 'react';
 import './Card.css'; // Import your CSS file
+import { Link } from 'react-router-dom';
 
 const Card = ({ imageUrl, title, price, description }) => {
   return (
@@ -10,7 +11,7 @@ const Card = ({ imageUrl, title, price, description }) => {
         <p className="card-price">${price}</p>
         <p className="card-description">{description}</p>
         <button className="order-button">
-          Order Online
+            <Link to='/orders'>Order Online</Link>
         </button>
       </div>
     </div>
