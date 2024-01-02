@@ -1,8 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import BookingForm from "./components/BookingForm";
 
-test('Renders the BookingForm heading', () => {
-    render(<BookingForm />);
-    const headingElement = screen.getByText("Book Your Table");
-    expect(headingElement).toBeInTheDocument();
-})
+describe('BookingForm', () => {
+    test('Renders the BookingForm heading', () => {
+        render(<BookingForm />);
+        const headingElement = screen.getByText("Book Your Table");
+        expect(headingElement).toBeInTheDocument();
+    });
+});

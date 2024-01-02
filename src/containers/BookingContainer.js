@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useRef } from 'react';
 import BookingForm from '../components/BookingForm';
 import BookingList from '../components/BookingsList';
 
@@ -24,11 +24,6 @@ const BookingContainer = () => {
   // State and dispatch for availableTimes
   const [availableTimes, dispatch] = useReducer(timesReducer, initialTimes);
 
-  const handleBookingSubmit = (formData) => {
-    // Add the new booking to the list of bookings
-    setsubmittedData(formData);
-  };
-
   // Function to initialize availableTimes based on the selected date
   const initializeTimes = () => {
     // For now, just return the same available times regardless of the date
@@ -41,8 +36,15 @@ const BookingContainer = () => {
     dispatch({ type: 'UPDATE_TIMES', payload: initializeTimes(selectedDate) });
   };
 
+  const handleBookingSubmit = (formData) => {
+    // Add the new booking to the list of bookings
+    setsubmittedData(formData);
+  };
+
+  const containerRef = useRef(null);
+
   return (
-    <div>
+    <div ref={containerRef}>
       <BookingForm onSubmit={handleBookingSubmit} updateTimes={updateTimes} availableTimes={availableTimes} />
       {submittedData && <BookingList bookings={submittedData} />}
     </div>
