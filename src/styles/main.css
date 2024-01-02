@@ -1,4 +1,4 @@
-main {
+.hero {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,4 +33,18 @@ main {
     margin-top: 185px;
     border-radius: 25px;
     max-height: 35rem;
+}
+
+.specials {
+    display: flex;
+    padding: 1rem 6rem;
+    padding-top: 6rem;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.special-cards {
+    display: flex;
+    padding: 1rem 8rem;
+    justify-content: center;
 }
