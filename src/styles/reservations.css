@@ -1,0 +1,35 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Ensure the container takes at least the full viewport height */
+}
+
+.booking-form {
+    display: grid;
+    width: 350px;
+    gap: 20px;
+    background-color: #f4f4f4;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid red;
+    border-radius: 4px;
+    font-size: 15pt;
+}
+
+option {
+    background-color: #F4CE14;
+}
+
+.form-label {
+    margin: 0;
+}

@@ -29,17 +29,6 @@ main {
     color: #EDEFEE;
 }
 
-.hero-button {
-    background-color: #F4CE14;
-    width: 20rem;
-    height: 4rem;
-    border-radius: 20px;
-}
-
-.hero-button > p {
-    margin: 0;
-}
-
 .food-img {
     margin-top: 185px;
     border-radius: 25px;
