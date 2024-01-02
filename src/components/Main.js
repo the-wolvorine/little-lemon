@@ -39,7 +39,7 @@ export default function Main() {
                     <h1 className="hero-title">Little Lemon</h1>
                     <h2 className="hero-location">Chicago</h2>
                     <p className="hero-description">We are a family owned mediterranean restaurant, focussed on traditional recipies served with modern twist.</p>
-                    <Button style={{textDecoration: 'none'}}><Link to='/reservations'>Reserve a Table</Link></Button>
+                    <Button style={{textDecoration: 'none'}}><Link to='/bookings'>Reserve a Table</Link></Button>
                 </section>
                 <img src={banner} alt="food" className="food-img"/>
             </div>

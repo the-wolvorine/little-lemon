@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../styles/bookingForm.css";
 import Button from './Button/Button';
+import { fetchAPI, submitAPI } from '../api';
 
 const BookingForm = ({ onSubmit, updateTimes, availableTimes=[] }) => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,20 @@ const BookingForm = ({ onSubmit, updateTimes, availableTimes=[] }) => {
     guestsCount: 1,
     occassion: ''
   });
+
+  useEffect(() => {
+    const initializeTimes = async () => {
+      const today = new Date();
+      const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1)
+        .toString()
+        .padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
+      const times = await fetchAPI(formattedDate);
+      updateTimes(formattedDate);
+      return times;
+    };
+
+    initializeTimes();
+  }, [updateTimes]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,15 +38,22 @@ const BookingForm = ({ onSubmit, updateTimes, availableTimes=[] }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit(formData);
-    setFormData({
-      date: '',
-      reservationTime: '',
-      guestsCount: 1,
-      occassion: ''
-    });
+    const success = await submitAPI(formData);
+
+    if(success) {
+        onSubmit(formData);
+        setFormData({
+        date: '',
+        reservationTime: '',
+        guestsCount: 1,
+        occassion: ''
+        });
+    } else {
+        return(<p>Unable to load API</p>);
+    }
+    
   };
 
   return (
