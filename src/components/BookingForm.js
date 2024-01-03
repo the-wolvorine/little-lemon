@@ -47,8 +47,12 @@ const BookingForm = ({ onSubmit, updateTimes, availableTimes = [] }) => {
 
   return (
     <div className='form-container'>
-      <h1 className='booking-heading'>Book Your Table</h1>
-      <form className="booking-form" onSubmit={formik.handleSubmit}>
+      <h1 id="booking-heading" className='booking-heading'>Book Your Table</h1>
+      <form
+        className="booking-form"
+        onSubmit={formik.handleSubmit}
+        aria-labelledby="booking-heading"
+      >
         <label>
           <p className="form-label">Choose a Date:</p>
           <input
@@ -57,6 +61,9 @@ const BookingForm = ({ onSubmit, updateTimes, availableTimes = [] }) => {
             value={formik.values.date}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            aria-label="Choose a Date"
+            aria-required="true"
+            aria-invalid={formik.touched.date && !!formik.errors.date}
           />
           {formik.touched.date && formik.errors.date && <div className="error-message">{formik.errors.date}</div>}
         </label>
@@ -68,6 +75,9 @@ const BookingForm = ({ onSubmit, updateTimes, availableTimes = [] }) => {
             value={formik.values.reservationTime}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            aria-label="Choose Time"
+            aria-required="true"
+            aria-invalid={formik.touched.reservationTime && !!formik.errors.reservationTime}
           >
             <option value="">Select Time</option>
             {availableTimes.map((time) => (
@@ -89,6 +99,9 @@ const BookingForm = ({ onSubmit, updateTimes, availableTimes = [] }) => {
             value={formik.values.guestsCount}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            aria-label="Number of Guests"
+            aria-required="true"
+            aria-invalid={formik.touched.guestsCount && !!formik.errors.guestsCount}
           />
           {formik.touched.guestsCount && formik.errors.guestsCount && <div className="error-message">{formik.errors.guestsCount}</div>}
         </label>
@@ -100,6 +113,9 @@ const BookingForm = ({ onSubmit, updateTimes, availableTimes = [] }) => {
             value={formik.values.occasion}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            aria-label="Occasion"
+            aria-required="true"
+            aria-invalid={formik.touched.occasion && !!formik.errors.occasion}
           >
             <option value="">Select Occasion</option>
             <option value="Birthday">Birthday</option>
@@ -109,7 +125,13 @@ const BookingForm = ({ onSubmit, updateTimes, availableTimes = [] }) => {
           {formik.touched.occasion && formik.errors.occasion && <div className="error-message">{formik.errors.occasion}</div>}
         </label>
         <br />
-        <Button type="submit" disabled={formik.isSubmitting || !formik.isValid}>Make a Reservation</Button>
+        <Button
+          type="submit"
+          disabled={formik.isSubmitting || !formik.isValid}
+          aria-label="Make a Reservation"
+        >
+          Make a Reservation
+        </Button>
       </form>
     </div>
   );
