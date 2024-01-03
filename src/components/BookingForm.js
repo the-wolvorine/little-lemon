@@ -1,14 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import "../styles/bookingForm.css";
 import Button from './Button/Button';
 import { fetchAPI, submitAPI } from '../api';
 
-const BookingForm = ({ onSubmit, updateTimes, availableTimes=[] }) => {
-  const [formData, setFormData] = useState({
-    date: '',
-    reservationTime: '',
-    guestsCount: 1,
-    occassion: ''
+const BookingForm = ({ onSubmit, updateTimes, availableTimes = [] }) => {
+  const formik = useFormik({
+    initialValues: {
+      date: '',
+      reservationTime: '',
+      guestsCount: 1,
+      occasion: '',
+    },
+    validationSchema: Yup.object({
+      date: Yup.string().required('Please choose a date'),
+      reservationTime: Yup.string().required('Please choose a time'),
+      guestsCount: Yup.number().required('Please enter the number of guests').min(1, 'Must be at least 1').max(10, 'Cannot be more than 10'),
+      occasion: Yup.string().required('Please select an occasion'),
+    }),
+    onSubmit: async (values) => {
+      const success = await submitAPI(values);
+
+      if (success) {
+        onSubmit(values);
+        formik.resetForm();
+      } else {
+        console.error('Unable to submit the form.');
+      }
+    },
   });
 
   useEffect(() => {
@@ -25,57 +45,29 @@ const BookingForm = ({ onSubmit, updateTimes, availableTimes=[] }) => {
     initializeTimes();
   }, [updateTimes]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-
-    // Call updateTimes when the date field is changed
-    if (name === 'date') {
-      updateTimes(value);
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const success = await submitAPI(formData);
-
-    if(success) {
-        onSubmit(formData);
-        setFormData({
-        date: '',
-        reservationTime: '',
-        guestsCount: 1,
-        occassion: ''
-        });
-    } else {
-        return(<p>Unable to load API</p>);
-    }
-    
-  };
-
   return (
     <div className='form-container'>
-        <h1 className='booking-heading'>Book Your Table</h1>
-      <form className="booking-form" onSubmit={handleSubmit}>
+      <h1 className='booking-heading'>Book Your Table</h1>
+      <form className="booking-form" onSubmit={formik.handleSubmit}>
         <label>
           <p className="form-label">Choose a Date:</p>
           <input
             type="date"
             name="date"
-            value={formData.date}
-            onChange={handleInputChange}
+            value={formik.values.date}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
+          {formik.touched.date && formik.errors.date && <div className="error-message">{formik.errors.date}</div>}
         </label>
         <br />
         <label>
           <p className="form-label">Choose Time:</p>
           <select
             name="reservationTime"
-            value={formData.reservationTime}
-            onChange={handleInputChange}
+            value={formik.values.reservationTime}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           >
             <option value="">Select Time</option>
             {availableTimes.map((time) => (
@@ -84,6 +76,7 @@ const BookingForm = ({ onSubmit, updateTimes, availableTimes=[] }) => {
               </option>
             ))}
           </select>
+          {formik.touched.reservationTime && formik.errors.reservationTime && <div className="error-message">{formik.errors.reservationTime}</div>}
         </label>
         <br />
         <label>
@@ -93,26 +86,30 @@ const BookingForm = ({ onSubmit, updateTimes, availableTimes=[] }) => {
             name="guestsCount"
             min="1"
             max="10"
-            value={formData.guestsCount}
-            onChange={handleInputChange}
+            value={formik.values.guestsCount}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
+          {formik.touched.guestsCount && formik.errors.guestsCount && <div className="error-message">{formik.errors.guestsCount}</div>}
         </label>
         <br />
         <label>
           <p className="form-label">Occasion:</p>
           <select
-            name="occassion"
-            value={formData.occassion}
-            onChange={handleInputChange}
+            name="occasion"
+            value={formik.values.occasion}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           >
             <option value="">Select Occasion</option>
             <option value="Birthday">Birthday</option>
             <option value="Anniversary">Anniversary</option>
             <option value="Engagement">Engagement</option>
           </select>
+          {formik.touched.occasion && formik.errors.occasion && <div className="error-message">{formik.errors.occasion}</div>}
         </label>
         <br />
-        <Button type="submit">Make a Reservation</Button>
+        <Button type="submit" disabled={formik.isSubmitting || !formik.isValid}>Make a Reservation</Button>
       </form>
     </div>
   );
