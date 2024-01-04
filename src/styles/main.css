@@ -43,8 +43,67 @@
     align-items: center;
 }
 
-.special-cards {
+.special-cards, .review-cards {
     display: flex;
     padding: 1rem 8rem;
     justify-content: center;
+}
+
+.review-cards {
+    background-color: #495E57;
+}
+
+.reviews {
+    display: flex;
+    background-color: #495E57;
+    padding: 1rem 6rem;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.hero-section-2 {
+    display: flex;
+    align-items: center;
+    padding: 5rem 6rem;
+    background-color: #EDEFEE;
+}
+
+.image-container {
+    position: relative;
+    width: 50%;
+}
+
+.image-container img {
+    width: 250px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.overlapped-image {
+    position: absolute;
+    top: 40%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}
+
+.text-container {
+    width: 50%;
+    padding-left: 40px;
+}
+
+.text-container h1 {
+    color: #F4CE14;
+    font-size: 40pt;
+    margin-bottom: 10px;
+}
+
+.text-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.text-container p {
+    font-size: 16px;
+    line-height: 1.5;
 }

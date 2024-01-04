@@ -1,0 +1,48 @@
+.customer-review-card {
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 16px;
+    text-align: left;
+    max-width: 200px;
+    background-color: #EDEFEE;
+    border-radius: 10px;
+  }
+  
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .name {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .review-text {
+    margin-top: 8px;
+  }
+  
+  /* StarRating.css */
+  
+  .star-rating {
+    display: flex;
+    font-size: 1.5em;
+    color: #ffd700; /* Gold color for filled stars */
+  }
+  
+  .star-filled {
+    color: #ffd700;
+  }
+  
+  .star-outline {
+    color: #ccc; /* Color for empty stars */
+    transform: scale(0.8); /* Adjust scale for smaller size of empty stars */
+    margin-right: 3px;
+  }
+  

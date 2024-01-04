@@ -1,5 +1,7 @@
 export default function Login() {
     return(
-        <h1>This is Login page</h1>
+        <div style={{height: '100vh'}}>
+            <h1 style={{marginTop: '10rem'}}>You can Login here.</h1>
+        </div>
     );
 }
